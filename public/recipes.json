@@ -1,0 +1,142 @@
+[
+	{
+		"id": 1,
+		"name": "Spaghetti Bolognese",
+		"image": "/spaghetti_bolognese.jpg",
+		"ingredients": ["Spaghetti", "Ground Beef", "Tomato Sauce"],
+		"steps": ["Boil pasta", "Cook beef", "Mix with sauce"]
+	},
+	{
+		"id": 2,
+		"name": "Pancakes",
+		"image": "/pancakes.jpg",
+		"ingredients": ["Flour", "Eggs", "Milk"],
+		"steps": ["Mix ingredients", "Cook on griddle"]
+	},
+	{
+		"id": 3,
+		"name": "Caesar Salad",
+		"image": "/caesar_salad.jpg",
+		"ingredients": [
+			"Lettuce",
+			"Croutons",
+			"Caesar Dressing",
+			"Parmesan Cheese"
+		],
+		"steps": [
+			"Chop lettuce",
+			"Add croutons",
+			"Mix dressing",
+			"Top with cheese"
+		]
+	},
+	{
+		"id": 4,
+		"name": "Chicken Curry",
+		"image": "/chicken_curry.jpg",
+		"ingredients": ["Chicken", "Curry Powder", "Coconut Milk", "Onions"],
+		"steps": [
+			"Cook chicken",
+			"Saute onions",
+			"Add curry powder",
+			"Mix with coconut milk"
+		]
+	},
+	{
+		"id": 5,
+		"name": "Grilled Cheese Sandwich",
+		"image": "/grilled_cheese.jpg",
+		"ingredients": ["Bread", "Cheese", "Butter"],
+		"steps": ["Butter bread", "Add cheese", "Grill until golden brown"]
+	},
+	{
+		"id": 6,
+		"name": "Beef Tacos",
+		"image": "/beef_tacos.jpg",
+		"ingredients": [
+			"Ground Beef",
+			"Taco Shells",
+			"Lettuce",
+			"Cheese",
+			"Salsa"
+		],
+		"steps": ["Cook beef", "Assemble tacos with ingredients"]
+	},
+	{
+		"id": 7,
+		"name": "Margherita Pizza",
+		"image": "/margherita_pizza.jpg",
+		"ingredients": [
+			"Pizza Dough",
+			"Tomato Sauce",
+			"Mozzarella Cheese",
+			"Basil"
+		],
+		"steps": [
+			"Prepare dough",
+			"Spread sauce",
+			"Add cheese and basil",
+			"Bake"
+		]
+	},
+	{
+		"id": 8,
+		"name": "Chocolate Chip Cookies",
+		"image": "/chocolate_chip_cookies.jpg",
+		"ingredients": ["Flour", "Sugar", "Butter", "Chocolate Chips", "Egg"],
+		"steps": ["Mix ingredients", "Scoop onto tray", "Bake"]
+	},
+	{
+		"id": 9,
+		"name": "Fried Rice",
+		"image": "/fried_rice.jpg",
+		"ingredients": ["Rice", "Soy Sauce", "Eggs", "Mixed Vegetables"],
+		"steps": [
+			"Cook rice",
+			"Scramble eggs",
+			"Mix with vegetables and soy sauce"
+		]
+	},
+	{
+		"id": 10,
+		"name": "Tomato Soup",
+		"image": "/tomato_soup.jpg",
+		"ingredients": [
+			"Tomatoes",
+			"Garlic",
+			"Onion",
+			"Vegetable Stock",
+			"Cream"
+		],
+		"steps": [
+			"Saute garlic and onion",
+			"Add tomatoes",
+			"Blend",
+			"Add stock and cream"
+		]
+	},
+	{
+		"id": 11,
+		"name": "French Toast",
+		"image": "/french_toast.jpg",
+		"ingredients": ["Bread", "Eggs", "Milk", "Cinnamon"],
+		"steps": [
+			"Mix eggs and milk",
+			"Dip bread",
+			"Cook on skillet",
+			"Sprinkle cinnamon"
+		]
+	},
+	{
+		"id": 12,
+		"name": "Grilled Salmon",
+		"image": "/grilled_salmon.jpg",
+		"ingredients": ["Salmon", "Lemon", "Olive Oil", "Herbs"],
+		"steps": [
+			"Season salmon",
+			"Heat grill",
+			"Cook salmon on grill",
+			"Serve with lemon"
+		]
+	}
+]

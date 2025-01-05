@@ -1,5 +1,6 @@
 <script setup>
 import CookingRecipeCard from "./CookingRecipeCard.vue";
+
 const props = defineProps({
 	recipes: {
 		type: Array,
@@ -7,24 +8,36 @@ const props = defineProps({
 	},
 });
 
-const emit = defineEmits(["delete-recipe"]);
+const emit = defineEmits(["update-recipes"]);
 
-const deleteRecipe = (index) => {
-	emit("delete-recipe", index);
+const deleteRecipe = (id) => {
+	const updatedRecipes = props.recipes.filter(
+		(recipe) => recipe.id !== id
+	);
+	emit("update-recipes", updatedRecipes);
 };
 </script>
 
 <template>
 	<div class="recipe-list">
 		<CookingRecipeCard
-			v-for="(recipe, index) in recipes"
+			v-for="(recipe, index) in props.recipes"
 			:key="index"
-			:recipe="recipe"
-			@delete-recipe="deleteRecipe(index)"
+			:id="recipe.id"
+			:name="recipe.name"
+			:image="recipe.image"
+			:ingredients="recipe.ingredients"
+			:steps="recipe.steps"
+			@delete-recipe="deleteRecipe"
 		/>
 	</div>
 </template>
 
-<style>
-/* Add recipe list styles */
+<style scoped>
+.recipe-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	justify-content: center;
+}
 </style>
