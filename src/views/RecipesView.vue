@@ -2,20 +2,22 @@
 import { ref, onMounted, computed } from "vue";
 import CookingRecipeFilter from "../components/CookingRecipeFilter.vue";
 import CookingRecipeList from "../components/CookingRecipeList.vue";
+import AddCookingRecipe from "@/components/AddCookingRecipe.vue";
 
+const showRecipes = ref(true);
 const filter = ref('');
 const recipes = ref([]);
 const isLoading = ref(true);
 
 const fetchRecipes = async () => {
   try {
-    const savedRecipes = localStorage.getItem("recipes");
-	  if (savedRecipes) {
-      recipes.value = JSON.parse(savedRecipes);
-	  } else {
+    // const savedRecipes = localStorage.getItem("recipes");
+	//   if (savedRecipes) {
+    //   recipes.value = JSON.parse(savedRecipes);
+	//   } else {
       const response = await fetch("/recipes.json");
       recipes.value = await response.json();
-	  }
+	  //}
   } catch (error) {
     console.error("Failed to load recipes:", error);
   } finally {
@@ -25,7 +27,7 @@ const fetchRecipes = async () => {
 
 const updateRecipes = (newRecipes) => {
   recipes.value = newRecipes;
-  localStorage.setItem("recipes", JSON.stringify(recipes.value));
+  // localStorage.setItem("recipes", JSON.stringify(recipes.value));
 };
 
 onMounted(fetchRecipes);
@@ -36,36 +38,54 @@ const recipesFiltered = computed(() => {
     recipe.name.toLowerCase().includes(search)
   );
 });
+
+const addNewRecipe = (recipe) => {
+	recipes.value.push(recipe);
+	console.log('A new recipe is added!');
+	showRecipes.value = true;
+}
 </script>
 
 <template>
 	<div>
-		<div id="addNewRecipeWrapper" class="listFormated">
-			<button id="addNewRecipeBtn">Add new recipe</button>
-		</div>
-		<div>
-			<CookingRecipeFilter v-model:filter="filter" />
-		</div>
-		<div v-if="isLoading">Loading...</div>
-		<div v-else-if="!recipesFiltered.length">
-			<h2>No recipes available</h2>
+		<div v-if="showRecipes">
+			<div class="navigationBtnWrapper listFormated">
+				<button class="navigationBtn" @click="showRecipes = false">
+					Add new recipe
+				</button>
+			</div>
+			<div>
+				<CookingRecipeFilter v-model:filter="filter" />
+			</div>
+			<div v-if="isLoading">Loading...</div>
+			<div v-else-if="!recipesFiltered.length">
+				<h2>No recipes available</h2>
+			</div>
+			<div v-else>
+				<CookingRecipeList
+					:recipes="recipesFiltered"
+					@update-recipes="updateRecipes"
+				/>
+			</div>
 		</div>
 		<div v-else>
-			<CookingRecipeList
-				:recipes="recipesFiltered"
-				@update-recipes="updateRecipes"
-			/>
+			<div class="navigationBtnWrapper listFormated">
+				<button class="navigationBtn" @click="showRecipes = true">
+					Back
+				</button>
+			</div>
+			<AddCookingRecipe @add-recipe="addNewRecipe" />
 		</div>
 	</div>
 </template>
 
 <style scoped>
-#addNewRecipeWrapper {
+.navigationBtnWrapper {
 	position: relative;
 	min-height: 2.5em;
 }
 
-#addNewRecipeBtn {
+.navigationBtn {
 	position: absolute;
 	top: 0;
 	right: 0;
