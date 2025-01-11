@@ -33,15 +33,36 @@ const submitForm = () => {
 			placeholder="Ingredients"
 			required
 		></textarea>
-		<textarea
-			v-model="steps"
-			placeholder="Steps"
-			required
-		></textarea>
+		<textarea v-model="steps" placeholder="Steps" required></textarea>
 		<button type="submit">Add Recipe</button>
 	</form>
 </template>
 
 <style>
-/* Add form-specific styles */
+form {
+	border-radius: 10px;
+}
+
+form input {
+	border-radius: 5px;
+	border-width: thin;
+}
+
+form textarea {
+	overflow: auto;
+	max-width: 100%;
+	min-width: 100%;
+	min-height: 3rem;
+	max-height: 20rem;
+	border-radius: 5px;
+}
+
+form button {
+	background-color: #04AA6D;
+	margin: 0;
+}
+
+form button:hover {
+	background-color: #059862 ;
+}
 </style>
