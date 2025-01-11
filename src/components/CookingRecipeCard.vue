@@ -59,6 +59,7 @@ const deleteRecipe = (id) => {
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 	text-align: center;
 	transition: transform 0.2s ease, box-shadow 0.2s ease;
+	min-width: 20rem;
 }
 
 .recipe-card:hover {
