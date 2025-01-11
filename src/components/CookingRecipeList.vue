@@ -11,10 +11,7 @@ const props = defineProps({
 const emit = defineEmits(["update-recipes"]);
 
 const deleteRecipe = (id) => {
-	const updatedRecipes = props.recipes.filter(
-		(recipe) => recipe.id !== id
-	);
-	emit("update-recipes", updatedRecipes);
+	emit("update-recipes", id);
 };
 </script>
 
@@ -28,7 +25,7 @@ const deleteRecipe = (id) => {
 			:image="recipe.image"
 			:ingredients="recipe.ingredients"
 			:steps="recipe.steps"
-			@delete-recipe="deleteRecipe"
+			@delete-recipe="deleteRecipe(id)"
 		/>
 	</div>
 </template>

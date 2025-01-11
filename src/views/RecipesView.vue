@@ -11,13 +11,8 @@ const isLoading = ref(true);
 
 const fetchRecipes = async () => {
   try {
-    // const savedRecipes = localStorage.getItem("recipes");
-	//   if (savedRecipes) {
-    //   recipes.value = JSON.parse(savedRecipes);
-	//   } else {
-      const response = await fetch("/recipes.json");
-      recipes.value = await response.json();
-	  //}
+    const response = await fetch("/recipes.json");
+    recipes.value = await response.json();
   } catch (error) {
     console.error("Failed to load recipes:", error);
   } finally {
@@ -25,15 +20,21 @@ const fetchRecipes = async () => {
   }
 };
 
-const updateRecipes = (newRecipes) => {
-  recipes.value = newRecipes;
-  // localStorage.setItem("recipes", JSON.stringify(recipes.value));
+const deleteRecipe = (id) => {
+	recipes.value = recipes.value.filter(
+		(recipe) => recipe.id !== id
+	);
 };
 
 onMounted(fetchRecipes);
 
 const recipesFiltered = computed(() => {
   const search = filter.value.trim().toLowerCase();
+
+  if(search == '') {
+	  return recipes.value;
+  }
+
   return recipes.value.filter(recipe =>
     recipe.name.toLowerCase().includes(search)
   );
@@ -58,13 +59,13 @@ const addNewRecipe = (recipe) => {
 				<CookingRecipeFilter v-model:filter="filter" />
 			</div>
 			<div v-if="isLoading">Loading...</div>
-			<div v-else-if="!recipesFiltered.length">
+			<div v-else-if="recipes.length == 0">
 				<h2>No recipes available</h2>
 			</div>
 			<div v-else>
 				<CookingRecipeList
 					:recipes="recipesFiltered"
-					@update-recipes="updateRecipes"
+					@update-recipes="deleteRecipe"
 				/>
 			</div>
 		</div>
