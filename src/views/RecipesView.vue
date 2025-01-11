@@ -40,7 +40,9 @@ const recipesFiltered = computed(() => {
 
 <template>
 	<div>
-		<h2>Recipes</h2>
+		<div id="addNewRecipeWrapper" class="listFormated">
+			<button id="addNewRecipeBtn">Add new recipe</button>
+		</div>
 		<div>
 			<CookingRecipeFilter v-model:filter="filter" />
 		</div>
@@ -58,7 +60,21 @@ const recipesFiltered = computed(() => {
 </template>
 
 <style scoped>
-h2 {
-  margin: 0 1rem 0 1rem;
+#addNewRecipeWrapper {
+	position: relative;
+	min-height: 2.5em;
+}
+
+#addNewRecipeBtn {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 15%;
+	min-width: fit-content;
+	min-height: fit-content;
+}
+
+.listFormated {
+	margin: 0 1rem 0 1rem;
 }
 </style>
