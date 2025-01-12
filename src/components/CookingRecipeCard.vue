@@ -25,8 +25,6 @@ const props = defineProps({
 const emit = defineEmits(['delete-recipe']);
 
 const deleteRecipe = () => {
-	console.log(`id: `, props.id);
-	console.log(`CookingRecipeCard: deleteRecipe() fired!`);
 	emit('delete-recipe', props.id);
 };
 </script>

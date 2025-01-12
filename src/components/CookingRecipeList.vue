@@ -11,9 +11,7 @@ const props = defineProps({
 const emit = defineEmits(["update-recipes"]);
 
 const deleteRecipe = (id) => {
-	console.log(`@@@->id: `, id);
 	emit("update-recipes", id);
-	console.log(`CookingRecipeList: deleteRecipe() fired!`);
 };
 </script>
 
