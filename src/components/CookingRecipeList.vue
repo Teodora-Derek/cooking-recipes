@@ -11,7 +11,9 @@ const props = defineProps({
 const emit = defineEmits(["update-recipes"]);
 
 const deleteRecipe = (id) => {
+	console.log(`@@@->id: `, id);
 	emit("update-recipes", id);
+	console.log(`CookingRecipeList: deleteRecipe() fired!`);
 };
 </script>
 
@@ -25,7 +27,7 @@ const deleteRecipe = (id) => {
 			:image="recipe.image"
 			:ingredients="recipe.ingredients"
 			:steps="recipe.steps"
-			@delete-recipe="deleteRecipe(id)"
+			@delete-recipe="deleteRecipe"
 		/>
 	</div>
 </template>

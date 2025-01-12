@@ -28,7 +28,6 @@ import { RouterLink, RouterView } from "vue-router";
 
 <style>
 .app {
-	min-height: 100vh; /* Ensure the page takes at least the full viewport height */
 	display: flex;
 	flex-direction: column;
 }
@@ -79,7 +78,6 @@ nav a.router-link-exact-active {
 
 /* Content section */
 .content {
-	flex: 1; /* Allow content to grow and push footer to the bottom */
 	padding: 1rem;
 	background-color: var(--color-content-bg, #f9f9f9);
 }

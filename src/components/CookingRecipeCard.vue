@@ -22,10 +22,12 @@ const props = defineProps({
     }
 });
 
-const emit = defineEmits(["delete-recipe"]);
+const emit = defineEmits(['delete-recipe']);
 
-const deleteRecipe = (id) => {
-	emit("delete-recipe", id);
+const deleteRecipe = () => {
+	console.log(`id: `, props.id);
+	console.log(`CookingRecipeCard: deleteRecipe() fired!`);
+	emit('delete-recipe', props.id);
 };
 </script>
 
@@ -45,7 +47,7 @@ const deleteRecipe = (id) => {
 				{{ step }}
 			</li>
 		</ol>
-		<button @click="deleteRecipe(id)">Delete</button>
+		<button @click="deleteRecipe">Delete</button>
 	</div>
 </template>
 

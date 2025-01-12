@@ -10,6 +10,7 @@ const recipes = ref([]);
 const isLoading = ref(true);
 
 const fetchRecipes = async () => {
+	console.log(`AAA`);
   try {
     const response = await fetch("/recipes.json");
     recipes.value = await response.json();
@@ -21,9 +22,12 @@ const fetchRecipes = async () => {
 };
 
 const deleteRecipe = (id) => {
+	console.log(`recipe id: `, id);
+
 	recipes.value = recipes.value.filter(
 		(recipe) => recipe.id !== id
 	);
+	console.log(`RecipesView: deleteRecipe() fired!`);
 };
 
 onMounted(fetchRecipes);
@@ -41,6 +45,8 @@ const recipesFiltered = computed(() => {
 });
 
 const addNewRecipe = (recipe) => {
+	console.log(`recipe: `, recipe);
+	recipe.id = recipes.value.length + 1;
 	recipes.value.push(recipe);
 	console.log('A new recipe is added!');
 	showRecipes.value = true;
