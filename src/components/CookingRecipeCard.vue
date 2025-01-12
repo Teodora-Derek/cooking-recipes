@@ -53,6 +53,7 @@ const deleteRecipe = () => {
 
 <style>
 .recipe-card {
+	display: grid;
 	border: 1px solid #ddd;
 	border-radius: 8px;
 	padding: 16px;
@@ -95,6 +96,7 @@ const deleteRecipe = () => {
 	border-radius: 4px;
 	cursor: pointer;
 	transition: background-color 0.3s ease;
+	align-self: flex-end;
 }
 
 .recipe-card button:hover {
