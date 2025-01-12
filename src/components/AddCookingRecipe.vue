@@ -1,39 +1,50 @@
 <script setup>
-import { ref } from "vue";
-
-const name = ref("");
-const image = ref("");
-const ingredients = ref([]);
-const steps = ref([]);
+import { reactive } from "vue";
 
 const emit = defineEmits(["add-recipe"]);
 
-const submitForm = () => {
-	if (name.value && image.value && ingredients.value && steps.value) {
-		emit("add-recipe", {
-			name: name.value,
-			image: image.value,
-			ingredients: ingredients.value,
-			steps: steps.value,
-		});
-		name.value = "";
-		image.value = "";
-		ingredients.value = [];
-		steps.value = [];
-	}
+const form = reactive({
+	name: "",
+	image: "",
+	ingredients: "",
+	steps: "",
+});
+
+const submitRecipe = () => {
+	const newRecipe = {
+		name: form.name,
+		image: form.image,
+		ingredients: form.ingredients.split(",").map((item) => item.trim()),
+		steps: form.steps.split(",").map((item) => item.trim()),
+	};
+
+	emit("add-recipe", newRecipe);
+
+	form.name = "";
+	form.image = "";
+	form.ingredients = "";
+	form.steps = "";
 };
 </script>
 
 <template>
-	<form @submit.prevent="submitForm">
-		<input v-model="name" placeholder="Recipe Name" required />
-		<input v-model="image" placeholder="Image URL" required />
-		<textarea
-			v-model="ingredients"
-			placeholder="Ingredients"
-			required
-		></textarea>
-		<textarea v-model="steps" placeholder="Steps" required></textarea>
+	<form @submit.prevent="submitRecipe">
+		<div>
+			<label for="name">Recipe Name:</label>
+			<input v-model="form.name" id="name" required />
+		</div>
+		<div>
+			<label for="image">Image URL:</label>
+			<input v-model="form.image" id="image" required />
+		</div>
+		<div>
+			<label for="ingredients">Ingredients (comma-separated):</label>
+			<input v-model="form.ingredients" id="ingredients" required />
+		</div>
+		<div>
+			<label for="steps">Steps (comma-separated):</label>
+			<input v-model="form.steps" id="steps" required />
+		</div>
 		<button type="submit">Add Recipe</button>
 	</form>
 </template>
